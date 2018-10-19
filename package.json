@@ -1,0 +1,23 @@
+{
+  "name": "web-audio-resampler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mingzhi22/web-audio-resampler.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mingzhi22/web-audio-resampler/issues"
+  },
+  "homepage": "https://github.com/mingzhi22/web-audio-resampler#readme",
+  "dependencies": {
+    "buffer-from": "^1.1.1",
+    "defaults": "^1.0.3"
+  }
+}
