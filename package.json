@@ -1,6 +1,6 @@
 {
   "name": "web-audio-resampler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "typings": "types/web-audio-resampler.d.ts",
