@@ -5,7 +5,6 @@ var defaults = require('defaults');
 // some versions of the buffer browser lib don't support Buffer.from (such as the one included by the current version of express-browserify)
 var bufferFrom = require('buffer-from');
 
-var TARGET_SAMPLE_RATE = 16000;
 /**
  * Transforms Buffers or AudioBuffers into a binary stream of l16 (raw wav) audio, downsampling in the process.
  *
@@ -22,6 +21,7 @@ var TARGET_SAMPLE_RATE = 16000;
 function WebAudioL16Stream(options) {
   options = this.options = defaults(options, {
     sourceSampleRate: 48000,
+    targetSampleRate: 16000,
     downsample: true
   });
 
@@ -42,7 +42,7 @@ WebAudioL16Stream.prototype.emitFormat = function emitFormat() {
   this.emit('format', {
     channels: 1,
     bitDepth: 16,
-    sampleRate: this.options.downsample ? TARGET_SAMPLE_RATE : this.options.sourceSampleRate,
+    sampleRate: this.options.downsample ? this.options.targetSampleRate : this.options.sourceSampleRate,
     signed: true,
     float: false
   });
@@ -110,7 +110,7 @@ WebAudioL16Stream.prototype.downsample = function downsample(bufferNewSamples) {
     -0.00089024,
     -0.037935
   ];
-  var samplingRateRatio = this.options.sourceSampleRate / TARGET_SAMPLE_RATE;
+  var samplingRateRatio = this.options.sourceSampleRate / this.options.targetSampleRate;
   var nOutputSamples = Math.floor((buffer.length - filter.length) / samplingRateRatio) + 1;
   var outputBuffer = new Float32Array(nOutputSamples);
 
