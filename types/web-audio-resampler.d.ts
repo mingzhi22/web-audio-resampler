@@ -1,10 +1,8 @@
-import { Transform } from 'stream';
-
 /**
  * web-audio-resampler
  * 降采样模块
  */
-export default class WebAudioL16Stream extends Transform {
+export default class WebAudioL16Stream {
   constructor({
     downsample,
     objectMode,
@@ -20,4 +18,7 @@ export default class WebAudioL16Stream extends Transform {
   })
 
   _transform(audioBuffer: AudioBuffer): void;
+
+  on(event: string, handle: (chunk: Uint8Array) => void): void;
+  write(audioBuffer: AudioBuffer): void;
 }
